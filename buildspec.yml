@@ -4,23 +4,19 @@ phases:
   install:
     runtime-versions:
       nodejs: 21
-   
     commands:
-        # install npm
-        - npm install
-        - npm install react-scripts --save
-       
+      # Install dependencies
+      - npm install
+
   build:
     commands:
-        # run build script
-        - npm run build
-     
+      # Run the build script
+      - npm run build
+
 artifacts:
-  # include all files required to run application
-  # notably excluded is node_modules, as this will cause overwrite error on deploy
   files:
-    - public/**/*
-    - src/**/*
-    - package.json
-    - appspec.yml
-    - scripts/**/*
+    - public/**/*  # All files under the public directory
+    - src/**/*      # All files under the src directory
+    - package.json  # Include the package.json for dependency info
+    - appspec.yml    # Include appspec file for CodeDeploy
+    - scripts/**/*   # Include all scripts
